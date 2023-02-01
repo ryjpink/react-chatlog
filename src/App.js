@@ -6,9 +6,7 @@ import ChatLog from './components/ChatLog';
 let heartCount = 0;
 const App = () => {
   const [messages, setMessages] = useState(chatMessages);
- 
-
-
+  const owner = 'Vladimir';
   const updateLike = (updatedmessage)=>{
     const updatedmessages = messages.map(message =>{
       if (message.id === updatedmessage.id){
@@ -43,7 +41,7 @@ const App = () => {
         <section><span className='widget' id='heartWidget'>{heartCount} ❤️s</span></section>
       </header>
       <main>
-        <ChatLog entries={messages} onupdate={updateLike}></ChatLog>
+        <ChatLog entries={messages} onupdate={updateLike} owner={owner}></ChatLog>
       </main>
     </div>
   );

@@ -5,8 +5,13 @@ import { DateTime } from 'luxon';
 import TimeStamp from './TimeStamp';
 
 const ChatEntry = (props) => {
-    let heart = props.liked ? '❤️':'🤍';
+    const heart = props.liked ? '❤️':'🤍';
+    let origin = 'local';
+    if  (props.sender != props.owner){
+      origin = 'remote';
+    }
     
+
     const updateLike = () =>{
     const updatedmessage = {
       id:props.id,
@@ -18,7 +23,7 @@ const ChatEntry = (props) => {
     props.onupdate(updatedmessage)
   };
     return (
-      <div className="chat-entry local">
+      <div className={`chat-entry ${origin}`}>
         <h2 className="entry-name">{props.sender}</h2>
         <section className="entry-bubble">
           <p>{props.body}</p>
