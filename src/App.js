@@ -2,10 +2,24 @@ import React, {useState} from 'react';
 import './App.css';
 import chatMessages from './data/messages.json';
 import ChatLog from './components/ChatLog';
+import ColorChoice from './components/ColorChoice';
 
 const App = () => {
   const [messages, setMessages] = useState(chatMessages);
-  const owner = 'Vladimir';
+  const [localColor, setLocalColor] = useState('black');
+  const [remoteColor, setRemoteColor] = useState('black');
+  const local = 'Vladimir';
+  const remote = 'Estragon';
+
+  const updateColor = (origin, updatedcolor)=>{
+    if (origin === remote){
+      setRemoteColor(updatedcolor);
+    }else{
+      setLocalColor(updatedcolor);
+    }
+  }
+
+
   const updateLike = (updatedmessage)=>{
     const updatedmessages = messages.map(message =>{
       if (message.id === updatedmessage.id){
@@ -31,11 +45,17 @@ const App = () => {
   return (
     <div id="App">
       <header>
-        <h1>Application title</h1>
-        <section><span className='widget' id='heartWidget'>{getHeartCount()} ❤️s</span></section>
+        <h1>Chat between <span className={localColor}>{local}</span> and <span className={remoteColor}>{remote}</span> </h1>
+        <section className='ribbon'>
+          <ColorChoice color={localColor} origin={local} colorupdate={updateColor}/>
+          <span className='widget' id='heartWidget'>{getHeartCount()} ❤️s</span>
+          <ColorChoice color={remoteColor} origin={remote} colorupdate={updateColor}/>
+        </section>
       </header>
       <main>
-        <ChatLog entries={messages} onupdate={updateLike} owner={owner}></ChatLog>
+        <ChatLog entries={messages} onupdate={updateLike} 
+                local={local} colorForLocal={localColor} colorForRemote={remoteColor}>
+        </ChatLog>
       </main>
     </div>
   );

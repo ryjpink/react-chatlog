@@ -7,8 +7,10 @@ import TimeStamp from './TimeStamp';
 const ChatEntry = (props) => {
     const heart = props.liked ? '❤️':'🤍';
     let origin = 'local';
-    if  (props.sender != props.owner){
+    let fontColor = props.colorForLocal;
+    if  (props.sender != props.local){
       origin = 'remote';
+      fontColor = props.colorForRemote;
     }
     
 
@@ -23,8 +25,8 @@ const ChatEntry = (props) => {
     props.onupdate(updatedmessage)
   };
     return (
-      <div className={`chat-entry ${origin}`}>
-        <h2 className="entry-name">{props.sender}</h2>
+      <div className={`chat-entry ${origin} ${fontColor}`}>
+        <h2 className="entry-name sender">{props.sender}</h2>
         <section className="entry-bubble">
           <p>{props.body}</p>
           <p className="entry-time"><TimeStamp time={props.timeStamp}/></p>
