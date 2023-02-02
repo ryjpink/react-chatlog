@@ -1,6 +1,7 @@
 import React from 'react';
 import './ChatLog.css';
 import ChatEntry from './ChatEntry';
+import PropTypes from 'prop-types';
 
 const ChatLog = ({entries, onupdate, local, colorForLocal, colorForRemote})=>{
 
@@ -16,4 +17,19 @@ const ChatLog = ({entries, onupdate, local, colorForLocal, colorForRemote})=>{
     return <section className='chat-log'>{chatentryComponents}</section>;
 }
 
+ChatLog.propTypes= {
+    entries: PropTypes.arrayOf(
+        PropTypes.shape({
+            id: PropTypes.number,
+            sender: PropTypes.string,
+            body: PropTypes.string,
+            timeStamp:PropTypes.string,
+            liked:PropTypes.bool,   
+        })
+    ),
+    onupdate: PropTypes.func,
+    local: PropTypes.string,
+    colorForLocal:PropTypes.string,
+    colorForRemote:PropTypes.string,
+};
 export default ChatLog;

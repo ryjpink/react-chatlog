@@ -37,11 +37,11 @@ const ChatEntry = (props) => {
   };
 
 ChatEntry.propTypes = {
-  id: PropTypes.number.isRequired,
-  sender:PropTypes.string.isRequired,
-  body:PropTypes.string.isRequired,
-  timeStamp:PropTypes.string.isRequired,
-  liked:PropTypes.bool.isRequired,
+  id: PropTypes.number,
+  sender:PropTypes.string,
+  body:PropTypes.string,
+  timeStamp:PropTypes.string,
+  liked:PropTypes.bool,
 };
 
 export default ChatEntry;

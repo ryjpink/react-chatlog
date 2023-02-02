@@ -1,5 +1,6 @@
 import React from 'react';
 import './ColorChoice.css';
+import PropTypes from 'prop-types';
 
 
 const ColorChoice = ({color, origin, colorupdate})=>{
@@ -18,6 +19,12 @@ const ColorChoice = ({color, origin, colorupdate})=>{
         </section>
     );
 };
+
+ColorChoice.propTypes ={
+    color: PropTypes.string,
+    origin: PropTypes.string,
+    colorupdate: PropTypes.func, 
+}
 
 
 export default ColorChoice;
