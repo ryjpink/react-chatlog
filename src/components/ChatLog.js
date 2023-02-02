@@ -6,9 +6,9 @@ import PropTypes from 'prop-types';
 const ChatLog = ({entries, onupdate, local, colorForLocal, colorForRemote})=>{
 
 
-    const chatentryComponents = entries.map(message=>{
+    const chatentryComponents = entries.map((message, index)=>{
         return <ChatEntry 
-                onupdate={onupdate} liked={message.liked} key={message.id} id={message.id}
+                onupdate={onupdate} liked={message.liked} key={index} id={message.id}
                 sender={message.sender} body={message.body} timeStamp={message.timeStamp} local={local}
                 colorForLocal={colorForLocal} colorForRemote={colorForRemote}
                 />;
