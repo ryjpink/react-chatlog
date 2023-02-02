@@ -25,7 +25,7 @@ const ChatEntry = (props) => {
     props.onupdate(updatedmessage)
   };
     return (
-      <div key={props.key} className={`chat-entry ${origin} ${fontColor}`}>
+      <div className={`chat-entry ${origin} ${fontColor}`}>
         <h2 className="entry-name sender">{props.sender}</h2>
         <section className="entry-bubble">
           <p>{props.body}</p>
